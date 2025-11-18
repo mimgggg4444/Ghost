@@ -1,3 +1,16 @@
+https://www.youtube.com/watch?v=XU9kh3Hs_Ss
+
+https://www.terabox.com/korean/sharing/link?surl=SiZjB5RLKoGMAyCIYdtcig
+
+https://www.terabox.com/korean/sharing/link?surl=vHuOgNsGgceoOeZjZk4j4w
+
+https://developer.android.com/tools/releases/platform-tools?hl=ko
+
+https://developer.android.com/studio/intro/update?hl=ko#sdk-manager
+
+https://github.com/francescotescari/XiaoMiToolV2/releases
+
+
 <h3 align="center">
     <img src="https://user-images.githubusercontent.com/54115104/116760735-6da1e780-aa1e-11eb-8c6f-530386487671.png" alt="logo" height="250px">
 </h3>
