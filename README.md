@@ -10,6 +10,9 @@ https://developer.android.com/studio/intro/update?hl=ko#sdk-manager
 
 https://github.com/francescotescari/XiaoMiToolV2/releases
 
+https://github.com/pivik271/CVE-2021-3490
+
+
 
 <h3 align="center">
     <img src="https://user-images.githubusercontent.com/54115104/116760735-6da1e780-aa1e-11eb-8c6f-530386487671.png" alt="logo" height="250px">
