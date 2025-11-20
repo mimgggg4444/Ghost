@@ -15,7 +15,7 @@ https://github.com/pivik271/CVE-2021-3490
 
 # Y:\download\CVE-2021-3490
 # adb 주입 -> 실행 -> 안됨 
-# 테스트 포인트 쇼트 / EDL 물리
+# 테스트 포인트 쇼트 / EDL 물리 -> miui ver check fail - repetitive process -> miui global 12 0 3 / Olivelite
 
 
 
