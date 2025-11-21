@@ -109,4 +109,75 @@ public final class ProcessList{
 ```
 
 
+Low Memory Killer
 
+```java
+public final class ProcessList{
+  //메모리부족시프로세스kill
+  private final boolean updateOomAdjLocked(ProcessRecord app, int cachedAdj, ProcessRecord TOP_APP, boolean doingAll, long now) {
+
+  //OOM ADJ 값 설정
+  setOomAdj(app.pid, app.uid, app.curAdj);
+
+  //kernel의 LMK에 전달
+  // /sys/module/lowmemorykiller/parameters/minfree
+  // /sys/module/lowmemorykiller/parameters/adj
+  }
+
+  //실제 kill 수행
+  final void killProcessesLocked(ProcessRecord app, String reason) {
+    ProcessList.killProcessGroup(app.uid, app.pid);
+  }
+}
+
+```
+
+
+확인 필
+
+miui(global 12.5.x) 는 aosp 코드를 수정하거나 추가 레이어를 구현하는가?
+
+```java
+public final class OomAdjuster{
+  private boolean computeOomAdjLocked(...) {
+
+  //AOSP: 접근성 서비스 = PERCEPTIBLE_APP_ADJ(200)
+  //MIUI: 사용자가 화이트리스트에 추가하지 않으면 SERVICE_ADJ (500)또는 더 낮게 설정?
+
+  if(s.hasAccessibilityBindings()){
+    //MIUI추가체크
+    if(!isInMiuiWhitelist(app.packageName)) {
+      //우선순위 낮춤
+      adj=ProcessList.SERVICE_ADJ; // 500으로 하향
+    } else P
+      //화이트리스트면 AOSP와 동일
+      adj = ProcessList.PERCEPTIBLE_APP_ADJ; // 200
+}}}}
+
+```
+
+
+
+MIUI의 추가 킬러
+
+MIUI는 커널 LMK외에도 자체 킬러를 추가?
+
+``` JAVA
+package com.miui.powerkeeper; // 예시
+public class MiuiMemoryOptimizer {
+  //정기적으로 실행되는 메모리 최적화
+  private void optimizeMemoty() {
+    List<ProcessRecord> processes = getRunningProcesses();
+    for (ProcessRecord proc : processes) {
+
+      //MIUI 자체 기준으로 판단
+      if (shouldKill(proc)) {
+        //AOSP의 OOM ADJ 무시하고 강제 KILL
+        killProcess(proc);
+}}}
+
+private boolean shouldKill(ProcessRecord proc) {
+화면꺼진시간체크, 마지막 사용시간 체크, 배터리설정체크,화이트리스트체크
+return !isProtected(proc);
+}}
+```
